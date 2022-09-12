@@ -1,0 +1,26 @@
+<h1><%= @mechanic.name %></h1>
+
+<h3>Years of experience: <%= @mechanic.years_experience %></h3>
+<h4>Open Rides Currently Working On: </h4>
+<% @mechanic.ordered_rides.each do |ride| %>
+    <ul>
+      <li><%= ride.name %></li>
+    </ul>
+<% end %>
+
+<div id = 'search_section'>
+  <h3>Search for a ride to add</h3>
+  <%= form_with url: "/mechanics/#{@mechanic.id}?search=#{:ride_search}", method: :get, local: true, skip_enforcing_utf8: true do |form| %>
+    <%= form.text_field :ride_search %>
+    <%= form.submit 'Search for Ride by ID' %>
+  <% end %>
+</div>
+
+<% if @ride_search.present? %>
+  <div id = 'add-ride-section'>
+    <% @ride_search.each do |ride| %>
+      <h3><%= ride.name %></h3>
+      <%= button_to "Add to Mechanic", "/mechanic_rides/#{@mechanic.id}/#{ride.id}", method: :post, params: {pet_id: ride.id} %>
+    <% end %>
+  </div>
+<% end %>
