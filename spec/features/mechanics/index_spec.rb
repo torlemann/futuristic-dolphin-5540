@@ -8,14 +8,6 @@ RSpec.describe 'Mechanics Index' do
         @mechanic_2 = Mechanic.create!( name: "Dirty Burt", years_experience: 25)
         @mechanic_3 = Mechanic.create!( name: "Spenser", years_experience: 1)
 
-        # @ride_1 = Ride.create!( name: "The Death Wish", thrill_rating: 11, open: false, amusement_park_id: @park.id )
-        # @ride_2 = Ride.create!( name: "Whirling Dervish", thrill_rating: 5, open: false, amusement_park_id: @park.id )
-
-        # MechanicRide.create!( mechanic_id: @mechanic_1.id, ride_id: @ride_1.id)
-        # MechanicRide.create!( mechanic_id: @mechanic_3.id, ride_id: @ride_1.id)
-
-        #visit "/mechanics/#{@mechanic_1.id}"
-
         visit '/mechanics'
     end
 
